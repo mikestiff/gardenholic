@@ -392,15 +392,20 @@ input, textarea, select { font: inherit; }
 
 .about__portrait-img {
   aspect-ratio: 3/4;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 22%;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background:
-    linear-gradient(160deg, rgba(45,110,45,.2) 0%, rgba(74,53,32,.3) 100%),
-    /* Illustrative portrait-like SVG */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='440' height='590' viewBox='0 0 440 590'%3E%3Crect width='440' height='590' fill='%232d4a2d'/%3E%3Cellipse cx='220' cy='200' rx='90' ry='110' fill='%23c4a882'/%3E%3Crect x='130' y='290' width='180' height='200' rx='20' fill='%234d6b2d'/%3E%3Cellipse cx='220' cy='150' rx='85' ry='55' fill='%233a2a1a'/%3E%3Ccircle cx='185' cy='195' r='10' fill='%233a2a1a'/%3E%3Ccircle cx='255' cy='195' r='10' fill='%233a2a1a'/%3E%3Cpath d='M200,230 Q220,250 240,230' stroke='%23a07060' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Cellipse cx='60' cy='400' rx='55' ry='90' fill='%234d8c4d' opacity='.6'/%3E%3Cellipse cx='380' cy='420' rx='60' ry='100' fill='%234d8c4d' opacity='.5'/%3E%3Cellipse cx='100' cy='500' rx='70' ry='100' fill='%236abf6a' opacity='.4'/%3E%3Cellipse cx='340' cy='520' rx='80' ry='110' fill='%236abf6a' opacity='.35'/%3E%3C/svg%3E");
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(160deg, rgba(45,110,45,.2) 0%, rgba(74,53,32,.3) 100%);
   box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 900px) {
+  .about__portrait-img {
+    object-position: 50% 18%;
+  }
 }
 
 .about__badge {
@@ -501,6 +506,36 @@ input, textarea, select { font: inherit; }
   font-size: .92rem;
   color: rgba(255,255,255,.65);
   line-height: 1.65;
+}
+
+.services__flyer {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+}
+
+.services__flyer img {
+  width: min(100%, 520px);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255,255,255,.2);
+  box-shadow: var(--shadow-lg);
+}
+
+.services__flyer figcaption {
+  text-align: center;
+  max-width: 560px;
+}
+
+.services__flyer h3 {
+  font-family: var(--font-display);
+  color: var(--clr-white);
+  margin-bottom: .35rem;
+}
+
+.services__flyer p {
+  color: rgba(255,255,255,.72);
+  font-size: .95rem;
 }
 
 /* ============================================================
@@ -633,121 +668,63 @@ input, textarea, select { font: inherit; }
 
 .timeline__image:hover::after { opacity: 1; }
 
-/* Individual image styles (CSS art) */
+/* Timeline card photos */
 .timeline__image--bare {
-  background:
-    linear-gradient(to bottom, #87CEEB 0%, #87CEEB 40%, #8fbc6f 40%, #7a9e5a 60%, #6b8a4c 100%);
-}
-
-.timeline__image--bare::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 120px 80px at 20% 75%, #9ab870 0%, transparent 100%),
-    radial-gradient(ellipse 80px 60px at 75% 80%, #8aae60 0%, transparent 100%),
-    radial-gradient(ellipse 40px 90px at 85% 60%, #2d5e1e 0%, transparent 70%),
-    radial-gradient(ellipse 35px 80px at 90% 55%, #3a6b28 0%, transparent 70%);
+  background-image: url("../photos/garden-sk/1-before.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .timeline__image--structure {
-  background:
-    linear-gradient(to bottom, #a8d5e2 0%, #a8d5e2 35%, #7a9e5a 35%, #5a7a3a 60%, #c8b49a 60%, #b8a080 100%);
-}
-
-.timeline__image--structure::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    /* Stone path */
-    repeating-linear-gradient(90deg, transparent 0%, transparent 18%, rgba(160,130,90,.3) 18%, rgba(160,130,90,.3) 20%) 0 55% / 100% 45%,
-    /* Raised beds */
-    linear-gradient(transparent 62%, rgba(120,80,40,.4) 62%, rgba(120,80,40,.4) 90%, transparent 90%) 15% 0 / 20% 100%,
-    linear-gradient(transparent 62%, rgba(120,80,40,.4) 62%, rgba(120,80,40,.4) 90%, transparent 90%) 50% 0 / 20% 100%,
-    linear-gradient(transparent 62%, rgba(120,80,40,.4) 62%, rgba(120,80,40,.4) 90%, transparent 90%) 75% 0 / 20% 100%;
+  background-image: url("../photos/garden-sk/10-cisticka.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .timeline__image--meadow {
-  background:
-    linear-gradient(to bottom, #6baed6 0%, #74c0e8 30%, #4a8c2a 30%, #5a9e3a 55%, #6ab050 55%, #4a8c2a 100%);
-}
-
-.timeline__image--meadow::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle 4px at 25% 50%, #ff6b6b 50%, transparent 50%),
-    radial-gradient(circle 5px at 40% 45%, #ffd93d 50%, transparent 50%),
-    radial-gradient(circle 3px at 55% 55%, #ff6b6b 50%, transparent 50%),
-    radial-gradient(circle 4px at 70% 48%, #ffffff 50%, transparent 50%),
-    radial-gradient(circle 5px at 15% 60%, #ffd93d 50%, transparent 50%),
-    radial-gradient(circle 3px at 85% 52%, #ff6b6b 50%, transparent 50%),
-    radial-gradient(circle 4px at 60% 42%, #6ee7b7 50%, transparent 50%),
-    radial-gradient(circle 3px at 30% 65%, #ffffff 50%, transparent 50%),
-    radial-gradient(circle 5px at 78% 60%, #ffd93d 50%, transparent 50%);
+  background-image: url("../photos/garden-sk/15-terasa 0.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .timeline__image--forest {
-  background:
-    linear-gradient(to bottom, #5ba3c9 0%, #74b8de 25%, #2d5e1e 25%, #3d7028 55%, #4a8a30 55%, #3a6820 100%);
-}
-
-.timeline__image--forest::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    /* Tree canopies */
-    radial-gradient(ellipse 50px 60px at 25% 35%, #2d7a1e 0%, transparent 100%),
-    radial-gradient(ellipse 60px 70px at 50% 30%, #3a8c28 0%, transparent 100%),
-    radial-gradient(ellipse 45px 55px at 75% 38%, #2d7a1e 0%, transparent 100%),
-    /* Trunks */
-    linear-gradient(transparent 45%, rgba(74,53,20,.6) 45%, rgba(74,53,20,.6) 70%, transparent 70%) 23% 0 / 4px 100%,
-    linear-gradient(transparent 40%, rgba(74,53,20,.6) 40%, rgba(74,53,20,.6) 68%, transparent 68%) 49% 0 / 5px 100%,
-    linear-gradient(transparent 48%, rgba(74,53,20,.6) 48%, rgba(74,53,20,.6) 72%, transparent 72%) 74% 0 / 4px 100%;
+  background-image: url("../photos/garden-sk/20-zidka.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .timeline__image--water {
-  background:
-    linear-gradient(to bottom, #87ceeb 0%, #a8d8ea 30%, #5a9e3a 30%, #4a8a2a 45%, #3a7bc8 45%, #2d6bb8 70%, #4a9e3a 70%, #3a8a2a 100%);
-}
-
-.timeline__image--water::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    /* Water ripples */
-    radial-gradient(ellipse 90px 20px at 50% 58%, rgba(100,180,255,.35) 0%, transparent 100%),
-    radial-gradient(ellipse 60px 12px at 45% 55%, rgba(100,180,255,.25) 0%, transparent 100%),
-    /* Lily pads */
-    radial-gradient(circle 10px at 38% 60%, #2d7a1e 50%, transparent 50%),
-    radial-gradient(circle 8px  at 62% 56%, #3a8a28 50%, transparent 50%),
-    /* Reeds */
-    linear-gradient(transparent 30%, rgba(100,70,20,.7) 30%, rgba(100,70,20,.7) 48%, transparent 48%) 20% 0 / 3px 100%,
-    linear-gradient(transparent 28%, rgba(100,70,20,.7) 28%, rgba(100,70,20,.7) 46%, transparent 46%) 80% 0 / 3px 100%;
+  background-image: url("../photos/garden-sk/98-z terasy.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .timeline__image--mature {
-  background:
-    linear-gradient(to bottom, #4a9fd4 0%, #6ab8e8 25%, #2d5e1e 25%, #3d7028 50%, #5a9e3a 50%, #4a8c2a 75%, #3a7820 100%);
+  background-image: url("../photos/garden-sk/99-z trasy.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
-.timeline__image--mature::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 70px 80px at 20% 35%, #1e5e10 0%, transparent 100%),
-    radial-gradient(ellipse 80px 90px at 50% 28%, #2d7818 0%, transparent 100%),
-    radial-gradient(ellipse 60px 75px at 80% 33%, #1e6412 0%, transparent 100%),
-    radial-gradient(ellipse 50px 40px at 35% 65%, #4a9e2a 0%, transparent 100%),
-    radial-gradient(ellipse 45px 35px at 65% 70%, #5aac38 0%, transparent 100%),
-    radial-gradient(circle 6px at 30% 55%, #ffcc00 50%, transparent 50%),
-    radial-gradient(circle 5px at 55% 60%, #ff9944 50%, transparent 50%),
-    radial-gradient(circle 4px at 70% 58%, #cc4444 50%, transparent 50%);
+.timeline__snapshot-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .55rem;
+}
+
+.timeline__snapshot-grid img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,.25);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 640px) {
+  .timeline__snapshot-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .timeline__card p {
